@@ -1,12 +1,11 @@
 <?php
 
-namespace DummyNamespace;
+namespace App\Http\Controllers;
 
-use App\DummyModelClass;
+use App\Departamento;
 use Illuminate\Http\Request;
-use DummyRootNamespaceHttp\Controllers\Controller;
 
-class DummyClass extends Controller
+class DepartamentoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class DummyClass extends Controller
      */
     public function index()
     {
-        return DummyModelClass::get();
+        return Departamento::get();
     }
 
     /**
@@ -26,30 +25,30 @@ class DummyClass extends Controller
      */
     public function store(Request $request)
     {
-        return DummyModelClass::create($request->all());
+        return Departamento::create($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \DummyFullModelClass  $DummyModelVariable
+     * @param  \App\Models\Departamento  $departamento
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        return DummyModelClass::findOrFail($id);
+        return Departamento::findOrFail($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \DummyFullModelClass  $DummyModelVariable
+     * @param  \App\Models\Departamento  $departamento
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $data = DummyModelClass::findOrFail($id);
+        $data = Departamento::findOrFail($id);
         $data->fill($request->all());
         $data->save();
         return $data;
@@ -58,12 +57,12 @@ class DummyClass extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \DummyFullModelClass  $DummyModelVariable
+     * @param  \App\Models\Departamento  $departamento
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $data = DummyModelClass::findOrFail($id);
+        $data = Departamento::findOrFail($id);
         $data->delete();
         return $data;
     }
@@ -77,6 +76,6 @@ class DummyClass extends Controller
     public function fill($request)
     {
         $request = json_decode($request, true);
-        return DummyModelClass::where($request)->get();
+        return Departamento::where($request)->get();
     }
 }

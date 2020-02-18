@@ -53,7 +53,7 @@
         Tu Busqueda de "{{ search }}" no encontró resultados.
       </v-alert>
       <template slot="no-data">
-        <v-alert slot="no-results" :value="true" color="info" icon="fa fa-times">
+        <v-alert slot="no-results" :value="true" color="primary" icon="fa fa-times" class="white--text">
           Sin resultados.
         </v-alert>
       </template>
