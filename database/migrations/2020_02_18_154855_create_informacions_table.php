@@ -16,7 +16,7 @@ class CreateInformacionsTable extends Migration
         Schema::create('informacions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('titulo');
-            $table->string('descripcion');
+            $table->string('descripcion', 2000);
             $table->timestamps();
             $table->softDeletes();
         });

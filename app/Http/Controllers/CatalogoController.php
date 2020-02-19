@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Catalogo;
+use App\Models\Catalogo;
 use Illuminate\Http\Request;
 
 class CatalogoController extends Controller

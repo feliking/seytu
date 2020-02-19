@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Promotora;
+use App\Models\Promotora;
 use Illuminate\Http\Request;
 
 class PromotoraController extends Controller

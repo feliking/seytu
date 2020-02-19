@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Comentario;
+use App\Models\Comentario;
 use Illuminate\Http\Request;
 
 class ComentarioController extends Controller

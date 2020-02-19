@@ -126,6 +126,12 @@ export default {
           { title: 'Lugares', icon: 'map', to: {name: 'lugar'}, exact: false }
         ],
         [
+          { title: 'Tiendas', icon: 'map', to: {name: 'tienda'}, exact: false }
+        ],
+        [
+          { title: 'Información', icon: 'contact_support', to: {name: 'informacion'}, exact: false }
+        ],
+        [
           { title: 'Logout', icon: 'power_settings_new', action: this.logout }
         ],
       ]

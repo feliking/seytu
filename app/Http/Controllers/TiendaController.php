@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Tienda;
+use App\Models\Tienda;
 use Illuminate\Http\Request;
 
 class TiendaController extends Controller
@@ -14,7 +14,7 @@ class TiendaController extends Controller
      */
     public function index()
     {
-        return Tienda::get();
+        return Tienda::with('departamento')->get();
     }
 
     /**
