@@ -24,9 +24,10 @@ export default [
             { path: 'edit', name: 'profile-edit', component: require('$comp/admin/profile/edit/ProfileEdit').default }
           ]
         },
-        { path: 'lugares', name: 'lugar', component: require('$comp/admin/lugar/Index').default },
+        { path: 'promotoras', name: 'promotora', component: require('$comp/admin/promotora/Index').default },
         { path: 'tiendas', name: 'tienda', component: require('$comp/admin/tienda/Index').default },
         { path: 'informaciones', name: 'informacion', component: require('$comp/admin/informacion/Index').default },
+        { path: 'usuarios', name: 'usuario', component: require('$comp/admin/usuario/Index').default },
       ]
     },
   ]),

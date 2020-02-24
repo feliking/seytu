@@ -14,7 +14,7 @@ class PromotoraController extends Controller
      */
     public function index()
     {
-        return Promotora::get();
+        return Promotora::orderBy('created_at', 'DESC')->get();
     }
 
     /**
@@ -25,6 +25,7 @@ class PromotoraController extends Controller
      */
     public function store(Request $request)
     {
+        //$request['documentos_escaneados'] = json_encode($request->documentos_escaneados);
         return Promotora::create($request->all());
     }
 

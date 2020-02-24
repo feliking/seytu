@@ -23,6 +23,8 @@ class CreatePromotorasTable extends Migration
             $table->string('direccion');
             $table->jsonb('documentos_escaneados');
             $table->string('ci');
+            $table->integer('departamento_id')->unsigned();
+            $table->foreign('departamento_id')->references('id')->on('departamentos');
             $table->boolean('activo')->default(false);
             $table->timestamps();
             $table->softDeletes();
