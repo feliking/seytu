@@ -1,12 +1,22 @@
 <template>
   <v-row class="pa-0">
     <v-col cols="12" align="center">
-      <v-img 
-        src="/img/seytu.png"
-        contain
-        max-height="70px"
-        max-width="150px">
-      </v-img>
+      <v-row>
+        <v-col cols="3" align="left">
+          <router-link to="/login" class="font-weight-bold">INGRESAR</router-link>
+        </v-col>
+        <v-col cols="6">
+          <v-img 
+            src="/img/seytu.png"
+            contain
+            max-height="70px"
+            max-width="150px">
+          </v-img>
+        </v-col>
+        <v-col cols="3" align="right" fill-height>
+          <Form :bus="bus"/>
+        </v-col>
+      </v-row>
     </v-col>
     <v-col cols="12" align-center>
       <p class="text-center">Maquillaje       Perfumes      Tratamiento Facial</p>
@@ -99,23 +109,16 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import Form from './Form'
+
 export default {
+  components:{
+    Form
+  },
   data () {
     return {
-      colors: [
-        'indigo',
-        'warning',
-        'pink darken-2',
-        'red lighten-1',
-        'deep-purple accent-4',
-      ],
-      slides: [
-        'First',
-        'Second',
-        'Third',
-        'Fourth',
-        'Fifth',
-      ],
+      bus: new Vue(),
     }
   },
 }

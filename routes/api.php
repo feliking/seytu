@@ -19,13 +19,17 @@ Route::group(['middleware' => ['guest:api']], function() {
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
     Route::post('register', 'Auth\RegisterController@register');
+    Route::post('upload/file', 'UploadController@file');
+    Route::post('promotora', 'PromotoraController@store');
 });
 
 Route::group(['middleware' => ['jwt']], function() {
     Route::post('logout', 'Auth\LoginController@logout');
     Route::get('me', 'Auth\LoginController@me');
 
-    Route::post('upload/file', 'UploadController@file');
+    Route::apiResource('user', 'UserController');
+
+    
     Route::post('upload/base64_image', 'UploadController@base64_image');
     Route::post('upload/delete', 'UploadController@delete');
 
@@ -53,7 +57,11 @@ Route::group(['middleware' => ['jwt']], function() {
     Route::apiResource('producto', 'ProductoController');
     Route::get('producto/fill/{param}', 'ProductoController@fill');
 
-    Route::apiResource('promotora', 'PromotoraController');
+    Route::get('promotora', 'PromotoraController@index');
+    Route::get('promotora/{id}', 'PromotoraController@show');
+    Route::put('promotora/{id}', 'PromotoraController@update');
+    Route::delete('promotora/{id}', 'PromotoraController@destroy');
+    // Route::apiResource('promotora', 'PromotoraController');
     Route::get('promotora/fill/{param}', 'PromotoraController@fill');
 
     Route::apiResource('subcategoria', 'SubcategoriaController');

@@ -123,13 +123,16 @@ export default {
           { title: 'Profile', icon: 'person', to: {name: 'profile'}, exact: false }
         ],
         [
-          { title: 'Lugares', icon: 'map', to: {name: 'lugar'}, exact: false }
+          { title: 'Promotoras', icon: 'face', to: {name: 'promotora'}, exact: false }
         ],
         [
           { title: 'Tiendas', icon: 'map', to: {name: 'tienda'}, exact: false }
         ],
         [
           { title: 'Información', icon: 'contact_support', to: {name: 'informacion'}, exact: false }
+        ],
+        [
+          { title: 'Usuarios', icon: 'group', to: {name: 'usuario'}, exact: false }
         ],
         [
           { title: 'Logout', icon: 'power_settings_new', action: this.logout }
