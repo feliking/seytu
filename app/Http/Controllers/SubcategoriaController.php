@@ -14,7 +14,7 @@ class SubcategoriaController extends Controller
      */
     public function index()
     {
-        return Subcategoria::get();
+        return Subcategoria::with('categoria')->get();
     }
 
     /**

@@ -123,6 +123,15 @@ export default {
           { title: 'Profile', icon: 'person', to: {name: 'profile'}, exact: false }
         ],
         [
+          { title: 'Categorías', icon: 'ballot', to: {name: 'categoria'}, exact: false }
+        ],
+        [
+          { title: 'Subcategorías', icon: 'amp_stories', to: {name: 'subcategoria'}, exact: false }
+        ],
+        [
+          { title: 'Productos', icon: 'how_to_vote', to: {name: 'producto'}, exact: false }
+        ],
+        [
           { title: 'Promotoras', icon: 'face', to: {name: 'promotora'}, exact: false }
         ],
         [
@@ -130,6 +139,9 @@ export default {
         ],
         [
           { title: 'Información', icon: 'contact_support', to: {name: 'informacion'}, exact: false }
+        ],
+        [
+          { title: 'Catálogos', icon: 'menu_book', to: {name: 'catalogo'}, exact: false }
         ],
         [
           { title: 'Usuarios', icon: 'group', to: {name: 'usuario'}, exact: false }

@@ -18,7 +18,7 @@ class CreateCatalogosTable extends Migration
             $table->string('nombre');
             $table->string('gestion');
             $table->string('archivo');
-            $table->string('estado');
+            $table->boolean('estado')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

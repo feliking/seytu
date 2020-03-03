@@ -24,9 +24,13 @@ export default [
             { path: 'edit', name: 'profile-edit', component: require('$comp/admin/profile/edit/ProfileEdit').default }
           ]
         },
+        { path: 'subcategorias', name: 'subcategoria', component: require('$comp/admin/subcategoria/Index').default },
+        { path: 'categorias', name: 'categoria', component: require('$comp/admin/categoria/Index').default },
+        { path: 'productos', name: 'producto', component: require('$comp/admin/producto/Index').default },
         { path: 'promotoras', name: 'promotora', component: require('$comp/admin/promotora/Index').default },
         { path: 'tiendas', name: 'tienda', component: require('$comp/admin/tienda/Index').default },
         { path: 'informaciones', name: 'informacion', component: require('$comp/admin/informacion/Index').default },
+        { path: 'catalogos', name: 'catalogo', component: require('$comp/admin/catalogo/Index').default },
         { path: 'usuarios', name: 'usuario', component: require('$comp/admin/usuario/Index').default },
       ]
     },

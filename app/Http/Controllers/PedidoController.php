@@ -14,7 +14,7 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        return Pedido::get();
+        return Pedido::with('productos')->get();
     }
 
     /**
@@ -25,7 +25,11 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        return Pedido::create($request->all());
+        $pedido = Pedido::create($request->all());
+        foreach($request->productos as $producto){
+            $pedido->productos()->attach($producto->producto_id, ["cantidad" => $producto->cantidad]);
+        }
+        return $pedido;
     }
 
     /**

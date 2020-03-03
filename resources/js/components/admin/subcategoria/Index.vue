@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-toolbar>
-        <v-toolbar-title>Lugares</v-toolbar-title>
+        <v-toolbar-title>Subcategorías</v-toolbar-title>
         <v-spacer></v-spacer>        
         <v-divider
           class="mx-2"
@@ -37,15 +37,15 @@
       <template v-slot:item.action="{ item }">
         <v-icon
           color="warning"
-          title="editar"
           class="mr-2"
+          title="editar"
           @click="editItem(item)"
         >
           edit
         </v-icon>
         <v-icon
         color="error"
-        title="eliminar"
+          title="eliminar"
           @click="removeItem(item)"
         >
           delete
@@ -77,6 +77,11 @@ export default {
     bus: new Vue(),
     headers: [
       {
+        text: "Categoria",
+        value: "categoria.nombre",
+        align: "center"
+      },
+      {
         text: "Nombre",
         value: "nombre",
         align: "center"
@@ -102,7 +107,7 @@ export default {
   methods: {
     async getTable() {
       try {
-        let res = await axios.get("api/lugar")
+        let res = await axios.get("api/subcategoria")
         this.table = res.data;
         this.loading = false
       } catch (e) {
@@ -113,7 +118,7 @@ export default {
       this.bus.$emit("openDialog", item);
     },
     async removeItem(item) {
-      this.bus.$emit("openDialogRemove", `api/lugar/${item.id}`);      
+      this.bus.$emit("openDialogRemove", `api/subcategoria/${item.id}`);      
     },
   }
 };

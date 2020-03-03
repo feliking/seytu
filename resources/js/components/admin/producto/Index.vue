@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-toolbar>
-        <v-toolbar-title>Lugares</v-toolbar-title>
+        <v-toolbar-title>Productos</v-toolbar-title>
         <v-spacer></v-spacer>        
         <v-divider
           class="mx-2"
@@ -33,19 +33,54 @@
       class="elevation-1"
       :loading="loading" 
       loading-text="Cargando... Espere por favor"
+      :single-expand="singleExpand"
+      :expanded.sync="expanded"
+      item-key="id"
+      show-expand
     >
+      <template v-slot:expanded-item="{ headers, item }">
+        <td :colspan="headers.length">
+          <v-card>
+            <v-simple-table>
+              <template v-slot:default>
+                <tbody>
+                  <tr>
+                    <td><strong>Descripción: </strong></td>
+                    <td>{{ item.descripcion }}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Imagenes: </strong></td>
+                    <td>
+                      <a 
+                        v-for="image of item.fotos"
+                        :href="image.ruta"
+                        :key="image.ruta"
+                        target="_blank">
+                        <v-img
+                          :src="image.ruta"
+                          max-width="400px">
+                        </v-img>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </template>
+            </v-simple-table>
+          </v-card>
+        </td>
+      </template>
       <template v-slot:item.action="{ item }">
         <v-icon
           color="warning"
-          title="editar"
           class="mr-2"
+          title="editar"
           @click="editItem(item)"
         >
           edit
         </v-icon>
         <v-icon
         color="error"
-        title="eliminar"
+          title="eliminar"
           @click="removeItem(item)"
         >
           delete
@@ -76,9 +111,33 @@ export default {
   data: () => ({
     bus: new Vue(),
     headers: [
+      { 
+        text: '', 
+        value: 'data-table-expand' 
+      },
+      {
+        text: "subcategoria",
+        value: "subcategoria.nombre",
+        align: "center"
+      },
       {
         text: "Nombre",
         value: "nombre",
+        align: "center"
+      },
+      {
+        text: "Código",
+        value: "cod_producto",
+        align: "center"
+      },
+      {
+        text: "Precio/promotora",
+        value: "precio_promotora",
+        align: "center"
+      },
+      {
+        text: "Precio/cliente",
+        value: "precio_cliente",
         align: "center"
       },
       {
@@ -90,7 +149,9 @@ export default {
     ],
     table: [],
     search: "",
-    loading: true
+    loading: true,
+    expanded: [],
+    singleExpand: false,
   }),
   computed: {},
   mounted() {
@@ -102,8 +163,9 @@ export default {
   methods: {
     async getTable() {
       try {
-        let res = await axios.get("api/lugar")
+        let res = await axios.get("api/producto")
         this.table = res.data;
+        this.table.forEach(ele => ele.fotos = JSON.parse(ele.fotos))
         this.loading = false
       } catch (e) {
         console.log(e);
@@ -113,7 +175,7 @@ export default {
       this.bus.$emit("openDialog", item);
     },
     async removeItem(item) {
-      this.bus.$emit("openDialogRemove", `api/lugar/${item.id}`);      
+      this.bus.$emit("openDialogRemove", `api/producto/${item.id}`);      
     },
   }
 };

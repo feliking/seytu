@@ -15,8 +15,6 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('producto_id')->unsigned();
-            $table->foreign('producto_id')->references('id')->on('productos');
             $table->integer('promotora_id')->unsigned();
             $table->foreign('promotora_id')->references('id')->on('promotoras');
             $table->boolean('aprobado')->default(false);

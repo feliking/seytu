@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-toolbar>
-        <v-toolbar-title>Lugares</v-toolbar-title>
+        <v-toolbar-title>Catálogos</v-toolbar-title>
         <v-spacer></v-spacer>        
         <v-divider
           class="mx-2"
@@ -34,18 +34,41 @@
       :loading="loading" 
       loading-text="Cargando... Espere por favor"
     >
+      <template v-slot:item.archivo="{ item }">
+        <a :href="item.archivo" target="_blank">
+          <v-icon
+            color="error"
+            title="Abrir archivo pdf">
+            picture_as_pdf
+          </v-icon>
+        </a>
+      </template>
+      <template v-slot:item.estado="{ item }">
+        <v-icon
+          v-if="item.estado == true"
+          color="success"
+          @click="inactivar(item)">
+          check
+        </v-icon>
+        <v-icon
+          v-if="item.estado == false"
+          color="error"
+          @click="activar(item)">
+          close
+        </v-icon>
+      </template>
       <template v-slot:item.action="{ item }">
         <v-icon
           color="warning"
-          title="editar"
           class="mr-2"
+          title="editar"
           @click="editItem(item)"
         >
           edit
         </v-icon>
         <v-icon
         color="error"
-        title="eliminar"
+          title="eliminar"
           @click="removeItem(item)"
         >
           delete
@@ -82,6 +105,21 @@ export default {
         align: "center"
       },
       {
+        text: "Gestión",
+        value: "gestion",
+        align: "center"
+      },
+      {
+        text: "Archivo",
+        value: "archivo",
+        align: "center"
+      },
+      {
+        text: "Estado",
+        value: "estado",
+        align: "center"
+      },
+      {
         text: "Opciones",
         align: "center",
         sortable: false,
@@ -102,7 +140,7 @@ export default {
   methods: {
     async getTable() {
       try {
-        let res = await axios.get("api/lugar")
+        let res = await axios.get("api/catalogo")
         this.table = res.data;
         this.loading = false
       } catch (e) {
@@ -113,8 +151,28 @@ export default {
       this.bus.$emit("openDialog", item);
     },
     async removeItem(item) {
-      this.bus.$emit("openDialogRemove", `api/lugar/${item.id}`);      
+      this.bus.$emit("openDialogRemove", `api/catalogo/${item.id}`);      
     },
+    async activar(item){
+      try{
+        let res = await axios.put('api/catalogo/'+item.id, { estado: true })
+        this.getTable()
+        this.$toast.success('Activado correctamente')
+      }
+      catch(e){
+        console.log(e)
+      }
+    },
+    async inactivar(item){
+      try{
+        let res = await axios.put('api/catalogo/'+item.id, { estado: false })
+        this.getTable()
+        this.$toast.warning('Desactivado correctamente')
+      }
+      catch(e){
+        console.log(e)
+      }
+    }
   }
 };
 </script>
