@@ -144,6 +144,9 @@ export default {
           { title: 'Catálogos', icon: 'menu_book', to: {name: 'catalogo'}, exact: false }
         ],
         [
+          { title: 'Pedidos', icon: 'group', to: {name: 'pedido'}, exact: false }
+        ],
+        [
           { title: 'Usuarios', icon: 'group', to: {name: 'usuario'}, exact: false }
         ],
         [

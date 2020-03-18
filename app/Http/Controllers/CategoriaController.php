@@ -36,7 +36,7 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        return Categoria::findOrFail($id);
+        return Categoria::with("subcategorias")->findOrFail($id);
     }
 
     /**

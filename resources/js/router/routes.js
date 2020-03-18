@@ -31,6 +31,7 @@ export default [
         { path: 'tiendas', name: 'tienda', component: require('$comp/admin/tienda/Index').default },
         { path: 'informaciones', name: 'informacion', component: require('$comp/admin/informacion/Index').default },
         { path: 'catalogos', name: 'catalogo', component: require('$comp/admin/catalogo/Index').default },
+        { path: 'pedidos', name: 'pedido', component: require('$comp/admin/pedido/Index').default },
         { path: 'usuarios', name: 'usuario', component: require('$comp/admin/usuario/Index').default },
       ]
     },
